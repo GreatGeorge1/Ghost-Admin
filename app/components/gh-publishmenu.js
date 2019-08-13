@@ -36,11 +36,11 @@ export default Component.extend({
         let state = this.postState;
 
         if (state === 'published') {
-            return 'Update';
+            return 'Обновить';
         } else if (state === 'scheduled') {
-            return 'Scheduled';
+            return 'Отложено';
         } else {
-            return 'Publish';
+            return 'Опубликовать';
         }
     }),
 
@@ -50,18 +50,18 @@ export default Component.extend({
         let runningText;
 
         if (postState === 'draft') {
-            runningText = saveType === 'publish' ? 'Publishing' : 'Scheduling';
+            runningText = saveType === 'publish' ? 'Публикация' : 'Планирование';
         }
 
         if (postState === 'published') {
-            runningText = saveType === 'publish' ? 'Updating' : 'Unpublishing';
+            runningText = saveType === 'publish' ? 'Обновление' : 'Отмена публикации';
         }
 
         if (postState === 'scheduled') {
-            runningText = saveType === 'schedule' ? 'Rescheduling' : 'Unscheduling';
+            runningText = saveType === 'schedule' ? 'Перепланирование' : 'Отмена планирования';
         }
 
-        return runningText || 'Publishing';
+        return runningText || 'Публикация';
     }),
 
     buttonText: computed('postState', 'saveType', function () {
@@ -70,18 +70,18 @@ export default Component.extend({
         let buttonText;
 
         if (postState === 'draft') {
-            buttonText = saveType === 'publish' ? 'Publish' : 'Schedule';
+            buttonText = saveType === 'publish' ? 'Опубликовать' : 'Запланировать';
         }
 
         if (postState === 'published') {
-            buttonText = saveType === 'publish' ? 'Update' : 'Unpublish';
+            buttonText = saveType === 'publish' ? 'Обновить' : 'Отменить публикацию';
         }
 
         if (postState === 'scheduled') {
-            buttonText = saveType === 'schedule' ? 'Reschedule' : 'Unschedule';
+            buttonText = saveType === 'schedule' ? 'Перепланировать' : 'Отменить планирование';
         }
 
-        return buttonText || 'Publish';
+        return buttonText || 'Опубликовать';
     }),
 
     successText: computed('_previousStatus', 'postState', function () {
@@ -90,7 +90,7 @@ export default Component.extend({
         let buttonText;
 
         if (previousStatus === 'draft') {
-            buttonText = postState === 'published' ? 'Published' : 'Scheduled';
+            buttonText = postState === 'published' ? 'Опубликованно' : 'Запланированно';
         }
 
         if (previousStatus === 'published') {

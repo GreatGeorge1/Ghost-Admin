@@ -1,11 +1,12 @@
 <div class="gh-flow">
     <div class="gh-flow-content-wrap">
         <section class="gh-flow-content">
-            <form id="login" method="post" class="gh-signin" novalidate="novalidate" {{action "authenticate" on="submit"}}>
+            <form id="login" method="post" class="gh-signin" novalidate="novalidate"
+                {{action "authenticate" on="submit"}}>
                 {{#gh-form-group errors=signin.errors hasValidated=hasValidated property="identification"}}
-                    <span class="gh-input-icon gh-icon-mail">
-                        {{svg-jar "email"}}
-                        {{gh-trim-focus-input
+                <span class="gh-input-icon gh-icon-mail">
+                    {{svg-jar "email"}}
+                    {{gh-trim-focus-input
                             class="email"
                             type="email"
                             placeholder="Email Address"
@@ -18,12 +19,12 @@
                             input=(action (mut signin.identification) value="target.value")
                             focus-out=(action "validate" "identification")
                         }}
-                    </span>
+                </span>
                 {{/gh-form-group}}
                 {{#gh-form-group errors=signin.errors hasValidated=hasValidated property="password"}}
-                    <span class="gh-input-icon gh-icon-lock forgotten-wrap">
-                        {{svg-jar "lock"}}
-                        {{gh-text-input
+                <span class="gh-input-icon gh-icon-lock forgotten-wrap">
+                    {{svg-jar "lock"}}
+                    {{gh-text-input
                             class="password"
                             type="password"
                             placeholder="Password"
@@ -34,7 +35,7 @@
                             value=(readonly signin.password)
                             input=(action (mut signin.password) value="target.value")}}
 
-                        {{#gh-task-button
+                    {{#gh-task-button
                             task=forgotten
                             class="forgotten-link gh-btn gh-btn-link gh-btn-icon"
                             tabindex="4"
@@ -43,9 +44,9 @@
                             failureClass=""
                             as |task|
                         }}
-                            <span>{{#if task.isRunning}}{{svg-jar "spinner" class="gh-spinner"}}{{else}}Forgot?{{/if}}</span>
-                        {{/gh-task-button}}
-                    </span>
+                    <span>{{#if task.isRunning}}{{svg-jar "spinner" class="gh-spinner"}}{{else}}Забыли?{{/if}}</span>
+                    {{/gh-task-button}}
+                </span>
                 {{/gh-form-group}}
 
                 {{gh-task-button "Sign in"

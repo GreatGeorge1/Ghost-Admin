@@ -4,30 +4,30 @@ export const AVAILABLE_EVENTS = [
     // GROUPNAME: Global
     {event: 'site.changed', name: 'Site changed (rebuild)', group: 'Global'},
 
-    // GROUPNAME: Posts
-    {event: 'post.added', name: 'Post created', group: 'Posts'},
-    {event: 'post.deleted', name: 'Post deleted', group: 'Posts'},
-    {event: 'post.edited', name: 'Post updated', group: 'Posts'},
-    {event: 'post.published', name: 'Post published', group: 'Posts'},
-    {event: 'post.published.edited', name: 'Published post updated', group: 'Posts'},
-    {event: 'post.unpublished', name: 'Post unpublished', group: 'Posts'},
-    {event: 'post.tag.attached', name: 'Tag added to post', group: 'Posts'},
-    {event: 'post.tag.detached', name: 'Tag removed from post', group: 'Posts'},
+    // GROUPNAME: Новости
+    {event: 'post.added', name: 'Post created', group: 'Новости'},
+    {event: 'post.deleted', name: 'Post deleted', group: 'Новости'},
+    {event: 'post.edited', name: 'Post updated', group: 'Новости'},
+    {event: 'post.published', name: 'Post published', group: 'Новости'},
+    {event: 'post.published.edited', name: 'Published post updated', group: 'Новости'},
+    {event: 'post.unpublished', name: 'Post unpublished', group: 'Новости'},
+    {event: 'post.tag.attached', name: 'Tag added to post', group: 'Новости'},
+    {event: 'post.tag.detached', name: 'Tag removed from post', group: 'Новости'},
 
-    // GROUPNAME: Pages
-    {event: 'page.added', name: 'Page created', group: 'Pages'},
-    {event: 'page.deleted', name: 'Page deleted', group: 'Pages'},
-    {event: 'page.edited', name: 'Page updated', group: 'Pages'},
-    {event: 'page.published', name: 'Page published', group: 'Pages'},
-    {event: 'page.published.edited', name: 'Published page updated', group: 'Pages'},
-    {event: 'page.unpublished', name: 'Page unpublished', group: 'Pages'},
-    {event: 'page.tag.attached', name: 'Tag added to page', group: 'Pages'},
-    {event: 'page.tag.detached', name: 'Tag removed from page', group: 'Pages'},
+    // GROUPNAME: Страницы
+    {event: 'page.added', name: 'Page created', group: 'Страницы'},
+    {event: 'page.deleted', name: 'Page deleted', group: 'Страницы'},
+    {event: 'page.edited', name: 'Page updated', group: 'Страницы'},
+    {event: 'page.published', name: 'Page published', group: 'Страницы'},
+    {event: 'page.published.edited', name: 'Published page updated', group: 'Страницы'},
+    {event: 'page.unpublished', name: 'Page unpublished', group: 'Страницы'},
+    {event: 'page.tag.attached', name: 'Tag added to page', group: 'Страницы'},
+    {event: 'page.tag.detached', name: 'Tag removed from page', group: 'Страницы'},
 
-    // GROUPNAME: Tags
-    {event: 'tag.added', name: 'Tag created', group: 'Tags'},
-    {event: 'tag.edited', name: 'Tag updated', group: 'Tags'},
-    {event: 'tag.deleted', name: 'Tag deleted', group: 'Tags'},
+    // GROUPNAME: Метки
+    {event: 'tag.added', name: 'Tag created', group: 'Метки'},
+    {event: 'tag.edited', name: 'Tag updated', group: 'Метки'},
+    {event: 'tag.deleted', name: 'Tag deleted', group: 'Метки'},
 
     // GROUPNAME: Subscribers
     {event: 'subscriber.added', name: 'Subscriber added', group: 'Subscribers'},

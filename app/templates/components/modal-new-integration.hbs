@@ -9,7 +9,7 @@
 <div class="modal-body">
     <fieldset>
         {{#gh-form-group errors=integration.errors hasValidated=integration.hasValidated property="name"}}
-            <label for="new-integration-name" class="fw6">Name</label>
+            <label for="new-integration-name" class="fw6">Имя</label>
             <input type="text"
                 value={{integration.name}}
                 oninput={{action "updateName" value="target.value"}}

@@ -8,7 +8,7 @@
 <div class="modal-body">
     <fieldset>
         {{#gh-form-group errors=webhook.errors hasValidated=webhook.hasValidated property="name"}}
-            <label for="webhook-name" class="fw6">Name</label>
+            <label for="webhook-name" class="fw6">Имя</label>
             {{gh-text-input
                 value=(readonly webhook.name)
                 input=(action (mut webhook.name) value="target.value")

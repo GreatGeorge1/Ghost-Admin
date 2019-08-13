@@ -1,6 +1,6 @@
 <section class="gh-canvas">
     <GhCanvasHeader class="gh-canvas-header post-header">
-        <h2 class="gh-canvas-title" data-test-screen-title>Pages</h2>
+        <h2 class="gh-canvas-title" data-test-screen-title>Страницы</h2>
         <section class="view-actions">
             <div class="gh-contentfilter">
                 {{#unless session.user.isContributor}}
@@ -17,7 +17,7 @@
                     data-test-type-select=true
                     as |type|
                 }}
-                    {{type.name}}
+                {{type.name}}
                 {{/power-select}}
                 {{/unless}}
 
@@ -36,7 +36,7 @@
                     data-test-author-select=true
                     as |author|
                 }}
-                    {{author.name}}
+                {{author.name}}
                 {{/power-select}}
                 {{/unless}}
 
@@ -56,7 +56,7 @@
                     data-test-tag-select=true
                     as |tag|
                 }}
-                    {{tag.name}}
+                {{tag.name}}
                 {{/power-select}}
                 {{/unless}}
 
@@ -73,48 +73,49 @@
                     data-test-order-select=true
                     as |order|
                 }}
-                    {{order.name}}
+                {{order.name}}
                 {{/power-select}}
             </div>
 
-            {{#link-to "editor.new" "page" class="gh-btn gh-btn-green" data-test-new-page-button=true}}<span>New page</span>{{/link-to}}
+            {{#link-to "editor.new" "page" class="gh-btn gh-btn-green" data-test-new-page-button=true}}<span>Новая
+                страница</span>{{/link-to}}
         </section>
     </GhCanvasHeader>
 
     <section class="content-list">
         <ol class="gh-list {{unless postsInfinityModel "no-posts"}}">
             {{#if postsInfinityModel}}
-                <li class="gh-list-row header">
-                    <div class="gh-list-header">{{!--Favorite indicator column: no header--}}</div>
-                    <div class="gh-list-header gh-posts-title-header">Title</div>
-                    <div class="gh-list-header">Status</div>
-                    <div class="gh-list-header">Last update</div>
-                    <div class="gh-list-header">Authors</div>
-                </li>
+            <li class="gh-list-row header">
+                <div class="gh-list-header">{{!--Favorite indicator column: no header--}}</div>
+                <div class="gh-list-header gh-posts-title-header">Название</div>
+                <div class="gh-list-header">Статус</div>
+                <div class="gh-list-header">Последнее обновление</div>
+                <div class="gh-list-header">Авторы</div>
+            </li>
             {{/if}}
 
             {{#each postsInfinityModel as |page|}}
-                {{gh-posts-list-item
+            {{gh-posts-list-item
                     post=page
                     onDoubleClick=(action "openEditor")
                     data-test-page-id=page.id}}
             {{else}}
-                <li class="no-posts-box">
-                    <div class="no-posts">
-                        {{#if showingAll}}
-                            {{svg-jar "pages-placeholder" class="gh-pages-placeholder"}}
-                            <h3>You haven't created any pages yet!</h3>
-                            {{#link-to "editor.new" "page" class="gh-btn gh-btn-green gh-btn-lg"}}
-                                <span>Create a new page</span>
-                            {{/link-to}}
-                        {{else}}
-                            <h3>No pages match the current filter</h3>
-                            {{#link-to "pages" (query-params type=null author=null tag=null) class="gh-btn gh-btn-lg"}}
-                                <span>Show all pages</span>
-                            {{/link-to}}
-                        {{/if}}
-                    </div>
-                </li>
+            <li class="no-posts-box">
+                <div class="no-posts">
+                    {{#if showingAll}}
+                    {{svg-jar "pages-placeholder" class="gh-pages-placeholder"}}
+                    <h3>У вас пока нет страниц!</h3>
+                    {{#link-to "editor.new" "page" class="gh-btn gh-btn-green gh-btn-lg"}}
+                    <span>Создать новую страницу</span>
+                    {{/link-to}}
+                    {{else}}
+                    <h3>Страниц по фильтру не найдено</h3>
+                    {{#link-to "pages" (query-params type=null author=null tag=null) class="gh-btn gh-btn-lg"}}
+                    <span>Показать все страницы</span>
+                    {{/link-to}}
+                    {{/if}}
+                </div>
+            </li>
             {{/each}}
         </ol>
 

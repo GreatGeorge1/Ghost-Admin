@@ -5,7 +5,7 @@ export default PostsRoute.extend({
 
     buildRouteInfoMetadata() {
         return {
-            titleToken: 'Pages'
+            titleToken: 'Страницы'
         };
     }
 });

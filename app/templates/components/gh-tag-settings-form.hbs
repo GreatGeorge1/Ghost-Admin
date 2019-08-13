@@ -17,7 +17,7 @@
             remove=(action "clearCoverImage")}}
         <form>
             {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="name"}}
-                <label for="tag-name">Name</label>
+                <label for="tag-name">Имя</label>
                 {{gh-text-input
                     id="tag-name"
                     name="name"
@@ -40,7 +40,7 @@
             {{/gh-form-group}}
 
             {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="description"}}
-                <label for="tag-description">Description</label>
+                <label for="tag-description">Описание</label>
                 {{gh-textarea
                     id="tag-description"
                     name="description"
@@ -91,7 +91,7 @@
             {{/gh-form-group}}
 
             {{#gh-form-group errors=tag.errors hasValidated=tag.hasValidated property="metaDescription"}}
-                <label for="meta-description">Meta Description</label>
+                <label for="meta-description">Meta Описание</label>
                 {{gh-textarea
                     id="meta-description"
                     name="metaDescription"

@@ -11,11 +11,11 @@
             </section>
         </GhCanvasHeader>
 
-        <h4 class="midlightgrey f-small fw5 ttu">Configuration</h4>
+        <h4 class="midlightgrey f-small fw5 ttu">Конфигурация</h4>
         <div class="pa5 pt3 pb3 br4 shadow-1 bg-grouped-table mt2">
             <div class="flex">
                 <div class="flex flex-column items-start">
-                    <label class="mb1">Icon</label>
+                    <label class="mb1">Иконка</label>
                     <figure class="relative flex items-center h-100 ma0 br4 hide-child ba b--whitegrey-d2 pa8 bg-white" style={{iconImageStyle}}>
                         {{#aspect-ratio-box class="flex items-center h-100" ratio="1/1" base="height"}}
                             {{#unless integration.iconImage}}
@@ -38,7 +38,7 @@
                                     class="child absolute top-0 left-0 w-100 h-100 br4 b white text-center bg-black-70 f8"
                                     {{action "triggerIconFileDialog"}}
                                 >
-                                    Upload
+                                    Загрузить
                                 </button>
                             {{/if}}
                             <div style="display:none">
@@ -59,7 +59,7 @@
                         hasValidated=integration.hasValidated
                         property="name"
                     }}
-                        <label for="integration_name">Name</label>
+                        <label for="integration_name">Имя</label>
                         {{gh-text-input
                             id="integration_name"
                             class="gh-input mt1 mb1"
@@ -78,7 +78,7 @@
                         hasValidated=integration.hasValidated
                         property="decription"
                     }}
-                        <label for="integration_description" class="mt3">Description</label>
+                        <label for="integration_description" class="mt3">Описание</label>
                         {{gh-text-input
                             id="integration_description"
                             class="gh-input mt1"
@@ -168,7 +168,7 @@
         <table class="ma0 w-100 bg-grouped-table shadow-1 br3">
             <thead>
                 <tr>
-                    <th class="pa2 pl3 midlightgrey ttu fw4 f-small br3 br--top br--left fw5">Name</th>
+                    <th class="pa2 pl3 midlightgrey ttu fw4 f-small br3 br--top br--left fw5">Имя</th>
                     <th class="pa2 pl3 midlightgrey ttu fw4 f-small br3 fw5">Event</th>
                     <th class="pa2 pl3 midlightgrey ttu fw4 f-small br3 fw5">URL</th>
                     <th class="pa2 pl3 midlightgrey ttu fw4 f-small br3 fw5">Last triggered</th>

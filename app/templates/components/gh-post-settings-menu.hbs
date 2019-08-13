@@ -2,9 +2,9 @@
     <div id="entry-controls">
         <div class="{{if isViewingSubview 'settings-menu-pane-out-left' 'settings-menu-pane-in'}} settings-menu settings-menu-pane">
             <div class="settings-menu-header">
-                <h4>{{capitalize post.displayName}} Settings</h4>
+                <h4>{{capitalize post.displayName}} Настройки</h4>
                 <button class="close settings-menu-header-action" {{action "closeMenus" target=ui}} data-test-close-settings-menu>
-                    {{svg-jar "close"}}<span class="hidden">Close</span>
+                    {{svg-jar "close"}}<span class="hidden">Закрыть</span>
                 </button>
             </div>
             <div class="settings-menu-content">
@@ -22,11 +22,11 @@
                     {{#unless post.isNew}}
                         {{#if post.isPublished}}
                         <a class="post-view-link" target="_blank" href="{{post.url}}">
-                            View {{post.displayName}} {{svg-jar "external"}}
+                            Посмотреть {{post.displayName}} {{svg-jar "external"}}
                         </a>
                         {{else}}
                         <a class="post-view-link" target="_blank" href="{{post.previewUrl}}">
-                            Preview {{svg-jar "external"}}
+                            Предпросмотр {{svg-jar "external"}}
                         </a>
                         {{/if}}
                     {{/unless}}
@@ -47,9 +47,9 @@
 
                 <div class="form-group">
                     {{#if (or post.isDraft post.isPublished post.pastScheduledTime)}}
-                        <label>Publish Date</label>
+                        <label>Дата публикации</label>
                     {{else}}
-                        <label>Scheduled Date</label>
+                        <label>Запланированная дата</label>
                     {{/if}}
                     {{gh-date-time-picker
                         date=post.publishedAtBlogDate
@@ -70,13 +70,13 @@
 
                 {{#unless session.user.isContributor}}
                 <div class="form-group">
-                    <label for="tag-input">Tags</label>
+                    <label for="tag-input">Метки</label>
                     {{gh-psm-tags-input post=post triggerId="tag-input"}}
                 </div>
                 {{/unless}}
 
                 {{#gh-form-group errors=post.errors hasValidated=post.hasValidated property="customExcerpt"}}
-                    <label for="custom-excerpt">Excerpt</label>
+                    <label for="custom-excerpt">Выдержка</label>
                     {{gh-textarea
                         class="post-setting-custom-excerpt"
                         id="custom-excerpt"
@@ -91,7 +91,7 @@
 
                 {{#unless session.user.isAuthorOrContributor}}
                     {{#gh-form-group class="for-select" errors=post.errors hasValidated=post.hasValidated property="authors" data-test-input="authors"}}
-                        <label for="author-list">Authors</label>
+                        <label for="author-list">Авторы</label>
                         {{gh-psm-authors-input selectedAuthors=post.authors updateAuthors=(action "changeAuthors") triggerId="author-list"}}
                         {{gh-error-message errors=post.errors property="authors" data-test-error="authors"}}
                     {{/gh-form-group}}
@@ -100,28 +100,28 @@
                 <ul class="nav-list nav-list-block">
                     <li class="nav-list-item" {{action "showSubview" "meta-data"}} data-test-button="meta-data">
                         <button type="button">
-                            <b>Meta Data</b>
+                            <b>Meta Данные</b>
                             <span>Extra content for search engines</span>
                         </button>
                         {{svg-jar "arrow-right"}}
                     </li>
                     <li class="nav-list-item" {{action "showSubview" "twitter-data"}} data-test-button="twitter-data">
                         <button type="button">
-                            <b>Twitter Card</b>
+                            <b>Twitter Пост</b>
                             <span>Customise structured data for Twitter</span>
                         </button>
                         {{svg-jar "arrow-right"}}
                     </li>
                     <li class="nav-list-item" {{action "showSubview" "facebook-data"}} data-test-button="facebook-data">
                         <button type="button">
-                            <b>Facebook Card</b>
+                            <b>Facebook Пост</b>
                             <span>Customise Open Graph data</span>
                         </button>
                         {{svg-jar "arrow-right"}}
                     </li>
                     <li class="nav-list-item" {{action "showSubview" "codeinjection"}} data-test-button="codeinjection">
                         <button type="button">
-                            <b>Code Injection</b>
+                            <b>Иньекция кода</b>
                             <span>Add styles/scripts to the header &amp; footer</span>
                         </button>
                         {{svg-jar "arrow-right"}}
@@ -139,7 +139,7 @@
                             data-test-checkbox="featured"
                         >
                         <span class="input-toggle-component"></span>
-                        <p>Feature this {{post.displayName}}</p>
+                        <p>Отметить этот {{post.displayName}}</p>
                     </label>
                 </div>
                 {{/unless}}
@@ -162,7 +162,7 @@
                     {{#if (eq subview "meta-data")}}
                         <div class="settings-menu-header subview">
                             <button {{action "closeSubview"}} class="back settings-menu-header-action" data-test-button="close-psm-subview">{{svg-jar "arrow-left"}}<span class="hidden">Back</span></button>
-                            <h4>Meta Data</h4>
+                            <h4>Meta Данные</h4>
                             <div style="width:23px;"></div>
                         </div>
 
@@ -184,7 +184,7 @@
                                 {{/gh-form-group}}
 
                                 {{#gh-form-group errors=post.errors hasValidated=post.hasValidated property="metaDescription"}}
-                                    <label for="meta-description">Meta Description</label>
+                                    <label for="meta-description">Meta Описание</label>
                                     {{gh-textarea
                                         class="post-setting-meta-description"
                                         id="meta-description"
@@ -212,7 +212,7 @@
                                 {{/gh-form-group}}
 
                                 <div class="form-group">
-                                    <label>Search Engine Result Preview</label>
+                                    <label>Search Engine Result Предпросмотр</label>
                                     <div class="seo-preview">
                                         <div class="seo-preview-title">{{truncate seoTitle 70}}</div>
                                         <div class="seo-preview-link">{{truncate seoURL 70}}</div>
@@ -226,7 +226,7 @@
                     {{#if (eq subview "twitter-data")}}
                         <div class="settings-menu-header subview">
                             <button {{action "closeSubview"}} class="back settings-menu-header-action" data-test-button="close-psm-subview">{{svg-jar "arrow-left"}}<span class="hidden">Back</span></button>
-                            <h4>Twitter Card</h4>
+                            <h4>Twitter Пост</h4>
                             <div style="width:23px;"></div>
                         </div>
 
@@ -256,7 +256,7 @@
                                 {{/gh-form-group}}
 
                                 {{#gh-form-group errors=post.errors hasValidated=post.hasValidated property="twitterDescription"}}
-                                    <label for="twitter-description">Twitter Description</label>
+                                    <label for="twitter-description">Twitter Описание</label>
                                     {{gh-textarea
                                         class="post-setting-twitter-description"
                                         id="twitter-description"
@@ -271,7 +271,7 @@
                                 {{/gh-form-group}}
 
                                 <div class="form-group">
-                                    <label>Preview</label>
+                                    <label>Предпросмотр</label>
                                     <div class="gh-twitter-preview">
                                         {{#if twitterImage}}
                                         <div class="gh-twitter-preview-image" style={{background-image-style twitterImage}}></div>
@@ -297,7 +297,7 @@
                     {{#if (eq subview "facebook-data")}}
                         <div class="settings-menu-header subview">
                             <button {{action "closeSubview"}} class="back settings-menu-header-action" data-test-button="close-psm-subview">{{svg-jar "arrow-left"}}<span class="hidden">Back</span></button>
-                            <h4>Facebook Card</h4>
+                            <h4>Facebook Пост</h4>
                             <div style="width:23px;"></div>
                         </div>
 
@@ -326,7 +326,7 @@
                                 {{/gh-form-group}}
 
                                 {{#gh-form-group errors=post.errors hasValidated=post.hasValidated property="ogDescription"}}
-                                    <label for="og-description">Facebook Description</label>
+                                    <label for="og-description">Facebook Описание</label>
                                     {{gh-textarea
                                         class="post-setting-og-description"
                                         id="og-description"
@@ -341,7 +341,7 @@
                                 {{/gh-form-group}}
 
                                 <div class="form-group">
-                                    <label>Preview</label>
+                                    <label>Предпросмотр</label>
                                     <div class="gh-og-preview">
                                         {{#if facebookImage}}
                                         <div class="gh-og-preview-image" style={{background-image-style facebookImage}}></div>

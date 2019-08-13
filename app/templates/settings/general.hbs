@@ -1,32 +1,32 @@
 <section class="gh-canvas">
     <div>
-    <GhCanvasHeader class="gh-canvas-header">
-        <h2 class="gh-canvas-title" data-test-screen-title>
-            General settings
-        </h2>
-        <section class="view-actions">
-            {{gh-task-button "Save settings" task=save class="gh-btn gh-btn-blue gh-btn-icon" data-test-save-button=true}}
-        </section>
-    </GhCanvasHeader>
+        <GhCanvasHeader class="gh-canvas-header">
+            <h2 class="gh-canvas-title" data-test-screen-title>
+                Основные настройки
+            </h2>
+            <section class="view-actions">
+                {{gh-task-button "Save settings" task=save class="gh-btn gh-btn-blue gh-btn-icon" data-test-save-button=true}}
+            </section>
+        </GhCanvasHeader>
 
-    {{#if showLeaveSettingsModal}}
+        {{#if showLeaveSettingsModal}}
         {{gh-fullscreen-modal "leave-settings"
             confirm=(action "leaveSettings")
             close=(action "toggleLeaveSettingsModal")
             modifier="action wide"}}
-    {{/if}}
+        {{/if}}
 
-    <section class="view-container">
+        <section class="view-container">
 
-        <div class="gh-setting-header gh-first-header">Publication info</div>
-        <div class="flex flex-column br3 shadow-1 bg-grouped-table pa5 mt2">
-            <div class="gh-setting-first">
-                <div class="gh-setting-content">
-                    <div class="gh-setting-title">Title &amp; description</div>
-                    <div class="gh-setting-desc">The details used to identify your publication around the web</div>
-                    {{#liquid-if pubInfoOpen}}
-                    <div class="gh-setting-content-extended">
-                        {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="title"}}
+            <div class="gh-setting-header gh-first-header">Publication info</div>
+            <div class="flex flex-column br3 shadow-1 bg-grouped-table pa5 mt2">
+                <div class="gh-setting-first">
+                    <div class="gh-setting-content">
+                        <div class="gh-setting-title">Title &amp; description</div>
+                        <div class="gh-setting-desc">The details used to identify your publication around the web</div>
+                        {{#liquid-if pubInfoOpen}}
+                        <div class="gh-setting-content-extended">
+                            {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="title"}}
                             {{gh-text-input
                                 value=(readonly settings.title)
                                 input=(action (mut settings.title) value="target.value")
@@ -35,9 +35,9 @@
                             }}
                             {{gh-error-message errors=settings.errors property="title"}}
                             <p>The name of your site</p>
-                        {{/gh-form-group}}
+                            {{/gh-form-group}}
 
-                        {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="description" class="description-container"}}
+                            {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="description" class="description-container"}}
                             {{gh-text-input
                                 value=(readonly settings.description)
                                 input=(action (mut settings.description) value="target.value")
@@ -46,39 +46,42 @@
                             }}
                             {{gh-error-message errors=settings.errors property="description"}}
                             <p>Used in your theme, meta data and search results</p>
-                        {{/gh-form-group}}
+                            {{/gh-form-group}}
+                        </div>
+                        {{/liquid-if}}
                     </div>
-                    {{/liquid-if}}
+                    <div class="gh-setting-action">
+                        <button type="button" class="gh-btn" {{action (toggle "pubInfoOpen" this)}}
+                            data-test-toggle-pub-info><span>{{if pubInfoOpen "Close" "Expand"}}</span></button>
+                    </div>
                 </div>
-                <div class="gh-setting-action">
-                    <button type="button" class="gh-btn" {{action (toggle "pubInfoOpen" this)}} data-test-toggle-pub-info><span>{{if pubInfoOpen "Close" "Expand"}}</span></button>
-                </div>
-            </div>
 
-            <div class="gh-setting">
-                <div class="gh-setting-content">
-                    <div class="gh-setting-title">Site timezone</div>
-                    <div class="gh-setting-desc">Set the time and date of your publication, used for all published posts</div>
-                    {{#liquid-if timezoneOpen}}
-                    <div class="gh-setting-content-extended">
-                        {{gh-timezone-select
+                <div class="gh-setting">
+                    <div class="gh-setting-content">
+                        <div class="gh-setting-title">Site timezone</div>
+                        <div class="gh-setting-desc">Set the time and date of your publication, used for all published
+                            posts</div>
+                        {{#liquid-if timezoneOpen}}
+                        <div class="gh-setting-content-extended">
+                            {{gh-timezone-select
                                 activeTimezone=settings.activeTimezone
                                 availableTimezones=availableTimezones
                                 update=(action "setTimezone")}}
+                        </div>
+                        {{/liquid-if}}
                     </div>
-                    {{/liquid-if}}
+                    <div class="gh-setting-action">
+                        <button type="button" class="gh-btn" {{action (toggle "timezoneOpen" this)}}
+                            data-test-toggle-timezone><span>{{if timezoneOpen "Close" "Expand"}}</span></button>
+                    </div>
                 </div>
-                <div class="gh-setting-action">
-                    <button type="button" class="gh-btn" {{action (toggle "timezoneOpen" this)}} data-test-toggle-timezone><span>{{if timezoneOpen "Close" "Expand"}}</span></button>
-                </div>
-            </div>
-            <div class="gh-setting-last">
-                <div class="gh-setting-content">
-                    <div class="gh-setting-title">Publication Language</div>
-                    <div class="gh-setting-desc">Set the language/locale which is used on your site</div>
-                    {{#liquid-if defaultLocaleOpen}}
-                    <div class="gh-setting-content-extended">
-                        {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="defaultLocale"}}
+                <div class="gh-setting-last">
+                    <div class="gh-setting-content">
+                        <div class="gh-setting-title">Publication Language</div>
+                        <div class="gh-setting-desc">Set the language/locale which is used on your site</div>
+                        {{#liquid-if defaultLocaleOpen}}
+                        <div class="gh-setting-content-extended">
+                            {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="defaultLocale"}}
                             {{gh-text-input
                                 value=(readonly settings.defaultLocale)
                                 input=(action (mut settings.defaultLocale) value="target.value")
@@ -86,128 +89,144 @@
                                 data-test-default-locale-input=true
                             }}
                             {{gh-error-message errors=settings.errors property="defaultLocale"}}
-                            <p>Default: English (<strong>en</strong>); you can add translation files to your theme for <a href="https://ghost.org/docs/api/handlebars-themes/helpers/translate/" target="_blank" rel="noopener">any language</a></p>
-                        {{/gh-form-group}}
+                            <p>Default: English (<strong>en</strong>); you can add translation files to your theme for
+                                <a href="https://ghost.org/docs/api/handlebars-themes/helpers/translate/"
+                                    target="_blank" rel="noopener">any language</a></p>
+                            {{/gh-form-group}}
+                        </div>
+                        {{/liquid-if}}
                     </div>
-                    {{/liquid-if}}
-                </div>
-                <div class="gh-setting-action">
-                    <button type="button" class="gh-btn" {{action (toggle "defaultLocaleOpen" this)}} data-test-toggle-default-locale><span>{{if defaultLocaleOpen "Close" "Expand"}}</span></button>
+                    <div class="gh-setting-action">
+                        <button type="button" class="gh-btn" {{action (toggle "defaultLocaleOpen" this)}}
+                            data-test-toggle-default-locale><span>{{if defaultLocaleOpen "Close" "Expand"}}</span></button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="gh-setting-header">Publication identity</div>
+            <div class="gh-setting-header">Publication identity</div>
 
-        <div class="flex flex-column br3 shadow-1 bg-grouped-table pa5">
-            <div class="gh-setting-first" data-test-setting="icon">
-                {{#gh-uploader
+            <div class="flex flex-column br3 shadow-1 bg-grouped-table pa5">
+                <div class="gh-setting-first" data-test-setting="icon">
+                    {{#gh-uploader
                     extensions=iconExtensions
                     paramsHash=(hash purpose="icon")
                     onComplete=(action "imageUploaded" "icon")
                     as |uploader|
                 }}
-                <div class="gh-setting-content">
-                    <div class="gh-setting-title">Publication icon</div>
-                    <div class="gh-setting-desc">A square, social icon used in the UI of your publication, at least 60x60px</div>
-                    {{#each uploader.errors as |error|}}
+                    <div class="gh-setting-content">
+                        <div class="gh-setting-title">Publication icon</div>
+                        <div class="gh-setting-desc">A square, social icon used in the UI of your publication, at least
+                            60x60px</div>
+                        {{#each uploader.errors as |error|}}
                         <div class="gh-setting-error" data-test-error="icon">{{or error.context error.message}}</div>
-                    {{/each}}
-                </div>
-                <div class="gh-setting-action gh-setting-action-smallimg">
-                    {{#if uploader.isUploading}}
+                        {{/each}}
+                    </div>
+                    <div class="gh-setting-action gh-setting-action-smallimg">
+                        {{#if uploader.isUploading}}
                         {{uploader.progressBar}}
-                    {{else if settings.icon}}
-                        <img class="blog-icon" src="{{settings.icon}}" onclick={{action "triggerFileDialog"}} alt="icon" data-test-icon-img>
-                        <button type="button" class="gh-setting-action-smallimg-delete" {{action "removeImage" "icon"}} data-test-delete-image="icon">
+                        {{else if settings.icon}}
+                        <img class="blog-icon" src="{{settings.icon}}" onclick={{action "triggerFileDialog"}} alt="icon"
+                            data-test-icon-img>
+                        <button type="button" class="gh-setting-action-smallimg-delete" {{action "removeImage" "icon"}}
+                            data-test-delete-image="icon">
                             <span>delete</span>
                         </button>
-                    {{else}}
-                        <button type="button" class="gh-btn" onclick={{action "triggerFileDialog"}} data-test-image-upload-btn="icon">
+                        {{else}}
+                        <button type="button" class="gh-btn" onclick={{action "triggerFileDialog"}}
+                            data-test-image-upload-btn="icon">
                             <span>Upload Image</span>
                         </button>
-                    {{/if}}
-                    <div style="display:none">
-                        {{gh-file-input multiple=false action=uploader.setFiles accept=iconMimeTypes data-test-file-input="icon"}}
+                        {{/if}}
+                        <div style="display:none">
+                            {{gh-file-input multiple=false action=uploader.setFiles accept=iconMimeTypes data-test-file-input="icon"}}
+                        </div>
                     </div>
+                    {{/gh-uploader}}
                 </div>
-                {{/gh-uploader}}
-            </div>
-            <div class="gh-setting" data-test-setting="logo">
-                {{#gh-uploader
+                <div class="gh-setting" data-test-setting="logo">
+                    {{#gh-uploader
                     extensions=imageExtensions
                     onComplete=(action "imageUploaded" "logo")
                     as |uploader|
                 }}
-                <div class="gh-setting-content">
-                    <div class="gh-setting-title">Publication logo</div>
-                    <div class="gh-setting-desc">The primary logo for your brand displayed across your theme, should be transparent and at least 600px x 72px</div>
-                    {{#each uploader.errors as |error|}}
+                    <div class="gh-setting-content">
+                        <div class="gh-setting-title">Publication logo</div>
+                        <div class="gh-setting-desc">The primary logo for your brand displayed across your theme, should
+                            be transparent and at least 600px x 72px</div>
+                        {{#each uploader.errors as |error|}}
                         <div class="gh-setting-error" data-test-error="logo">{{or error.context error.message}}</div>
-                    {{/each}}
-                </div>
-                <div class="gh-setting-action gh-setting-action-smallimg">
-                    {{#if uploader.isUploading}}
+                        {{/each}}
+                    </div>
+                    <div class="gh-setting-action gh-setting-action-smallimg">
+                        {{#if uploader.isUploading}}
                         {{uploader.progressBar}}
-                    {{else if settings.logo}}
-                        <img class="blog-logo" src="{{settings.logo}}"  onclick={{action "triggerFileDialog"}} alt="logo" data-test-logo-img>
-                        <button type="button" class="gh-setting-action-smallimg-delete" {{action "removeImage" "logo"}} data-test-delete-image="logo">
+                        {{else if settings.logo}}
+                        <img class="blog-logo" src="{{settings.logo}}" onclick={{action "triggerFileDialog"}} alt="logo"
+                            data-test-logo-img>
+                        <button type="button" class="gh-setting-action-smallimg-delete" {{action "removeImage" "logo"}}
+                            data-test-delete-image="logo">
                             <span>delete</span>
                         </button>
-                    {{else}}
-                        <button type="button" class="gh-btn" onclick={{action "triggerFileDialog"}} data-test-image-upload-btn="logo">
+                        {{else}}
+                        <button type="button" class="gh-btn" onclick={{action "triggerFileDialog"}}
+                            data-test-image-upload-btn="logo">
                             <span>Upload Image</span>
                         </button>
-                    {{/if}}
-                    <div style="display:none">
-                        {{gh-file-input multiple=false action=uploader.setFiles accept=imageMimeTypes data-test-file-input="logo"}}
+                        {{/if}}
+                        <div style="display:none">
+                            {{gh-file-input multiple=false action=uploader.setFiles accept=imageMimeTypes data-test-file-input="logo"}}
+                        </div>
                     </div>
+                    {{/gh-uploader}}
                 </div>
-                {{/gh-uploader}}
-            </div>
-            <div class="gh-setting-last" data-test-setting="coverImage">
-                {{#gh-uploader
+                <div class="gh-setting-last" data-test-setting="coverImage">
+                    {{#gh-uploader
                     extensions=imageExtensions
                     onComplete=(action "imageUploaded" "coverImage")
                     as |uploader|
                 }}
-                <div class="gh-setting-content">
-                    <div class="gh-setting-title">Publication cover</div>
-                    <div class="gh-setting-desc">An optional large background image for your site</div>
-                    {{#each uploader.errors as |error|}}
-                        <div class="gh-setting-error" data-test-error="coverImage">{{or error.context error.message}}</div>
-                    {{/each}}
-                </div>
-                <div class="gh-setting-action gh-setting-action-largeimg">
-                    {{#if uploader.isUploading}}
+                    <div class="gh-setting-content">
+                        <div class="gh-setting-title">Publication cover</div>
+                        <div class="gh-setting-desc">An optional large background image for your site</div>
+                        {{#each uploader.errors as |error|}}
+                        <div class="gh-setting-error" data-test-error="coverImage">{{or error.context error.message}}
+                        </div>
+                        {{/each}}
+                    </div>
+                    <div class="gh-setting-action gh-setting-action-largeimg">
+                        {{#if uploader.isUploading}}
                         {{uploader.progressBar}}
-                    {{else if settings.coverImage}}
-                        <img class="blog-cover" src="{{settings.coverImage}}"  onclick={{action "triggerFileDialog"}} alt="cover photo" data-test-cover-img>
-                        <button type="button" class="gh-setting-action-largeimg-delete" {{action "removeImage" "coverImage"}} data-test-delete-image="coverImage">
+                        {{else if settings.coverImage}}
+                        <img class="blog-cover" src="{{settings.coverImage}}" onclick={{action "triggerFileDialog"}}
+                            alt="cover photo" data-test-cover-img>
+                        <button type="button" class="gh-setting-action-largeimg-delete"
+                            {{action "removeImage" "coverImage"}} data-test-delete-image="coverImage">
                             <span>delete</span>
                         </button>
-                    {{else}}
-                        <button type="button" class="gh-btn" onclick={{action "triggerFileDialog"}} data-test-image-upload-btn="coverImage">
+                        {{else}}
+                        <button type="button" class="gh-btn" onclick={{action "triggerFileDialog"}}
+                            data-test-image-upload-btn="coverImage">
                             <span>Upload Image</span>
                         </button>
-                    {{/if}}
-                    <div style="display:none">
-                        {{gh-file-input multiple=false action=uploader.setFiles accept=imageMimeTypes data-test-file-input="coverImage"}}
+                        {{/if}}
+                        <div style="display:none">
+                            {{gh-file-input multiple=false action=uploader.setFiles accept=imageMimeTypes data-test-file-input="coverImage"}}
+                        </div>
                     </div>
+                    {{/gh-uploader}}
                 </div>
-                {{/gh-uploader}}
             </div>
-        </div>
 
-        <div class="gh-setting-header">Social accounts</div>
-        <div class="flex flex-column br3 shadow-1 bg-grouped-table pa5">
-            <div class="gh-setting-first gh-setting-last">
-                <div class="gh-setting-content">
-                    <div class="gh-setting-title">Social accounts</div>
-                    <div class="gh-setting-desc">Link your social accounts for full structured data and rich card support</div>
-                    {{#liquid-if socialOpen}}
-                    <div class="gh-setting-content-extended">
-                        {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="facebook"}}
+            <div class="gh-setting-header">Social accounts</div>
+            <div class="flex flex-column br3 shadow-1 bg-grouped-table pa5">
+                <div class="gh-setting-first gh-setting-last">
+                    <div class="gh-setting-content">
+                        <div class="gh-setting-title">Social accounts</div>
+                        <div class="gh-setting-desc">Link your social accounts for full structured data and rich card
+                            support</div>
+                        {{#liquid-if socialOpen}}
+                        <div class="gh-setting-content-extended">
+                            {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="facebook"}}
                             {{gh-text-input
                                 type="url"
                                 placeholder="https://www.facebook.com/ghost"
@@ -219,8 +238,8 @@
                             }}
                             {{gh-error-message errors=settings.errors property="facebook" data-test-facebook-error=true}}
                             <p>URL of your publication's Facebook Page</p>
-                        {{/gh-form-group}}
-                        {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="twitter"}}
+                            {{/gh-form-group}}
+                            {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="twitter"}}
                             {{gh-text-input
                                 type="url"
                                 placeholder="https://twitter.com/ghost"
@@ -232,67 +251,65 @@
                             }}
                             {{gh-error-message errors=settings.errors property="twitter" data-test-twitter-error=true}}
                             <p>URL of your publication's Twitter profile</p>
-                        {{/gh-form-group}}
+                            {{/gh-form-group}}
+                        </div>
+                        {{/liquid-if}}
                     </div>
-                    {{/liquid-if}}
-                </div>
-                <div class="gh-setting-action">
-                    <button type="button" class="gh-btn" {{action (toggle "socialOpen" this)}} data-test-toggle-social><span>{{if socialOpen "Close" "Expand"}}</span></button>
+                    <div class="gh-setting-action">
+                        <button type="button" class="gh-btn" {{action (toggle "socialOpen" this)}}
+                            data-test-toggle-social><span>{{if socialOpen "Close" "Expand"}}</span></button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="gh-setting-header">Advanced settings</div>
-        <div class="flex flex-column br3 shadow-1 bg-grouped-table pa5">
-            <div class="gh-setting-first gh-setting-last">
-                <div class="gh-setting-content">
-                    <div class="gh-setting-title">Make this site private</div>
-                    <div class="gh-setting-desc">
-                        Enable protection with simple shared password. All search engine optimization and social features will be disabled.
+            <div class="gh-setting-header">Advanced settings</div>
+            <div class="flex flex-column br3 shadow-1 bg-grouped-table pa5">
+                <div class="gh-setting-first gh-setting-last">
+                    <div class="gh-setting-content">
+                        <div class="gh-setting-title">Make this site private</div>
+                        <div class="gh-setting-desc">
+                            Enable protection with simple shared password. All search engine optimization and social
+                            features will be disabled.
 
-                        {{#if settings.isPrivate}}
+                            {{#if settings.isPrivate}}
                             <span class="avoid-break-out">
                                 <br><br>
                                 A private RSS feed is available at
                                 <a href="{{privateRSSUrl}}" target="_blank" rel="noopener">{{privateRSSUrl}}</a>
                             </span>
-                        {{/if}}
-                    </div>
+                            {{/if}}
+                        </div>
 
-                    {{#if settings.isPrivate}}
+                        {{#if settings.isPrivate}}
                         <div class="gh-setting-content-extended">
                             {{#gh-form-group errors=settings.errors hasValidated=settings.hasValidated property="password"}}
-                                {{gh-text-input
+                            {{gh-text-input
                                     value=(readonly settings.password)
                                     name="general[password]"
                                     focus-out=(action "validate" "password" target=settings)
                                     input=(action (mut settings.password) value="target.value")
                                     data-test-password-input=true
                                 }}
-                                {{gh-error-message errors=settings.errors property="password" data-test-password-error=true}}
-                                <p>Set the password for this site</p>
+                            {{gh-error-message errors=settings.errors property="password" data-test-password-error=true}}
+                            <p>Set the password for this site</p>
                             {{/gh-form-group}}
                         </div>
-                    {{/if}}
-                </div>
-                <div class="gh-setting-action">
-                    <div class="for-switch">
-                        <label class="switch" for="settings-private">
-                            <input
-                                type="checkbox"
-                                checked={{settings.isPrivate}}
-                                id="settings-private"
-                                onclick={{action "toggleIsPrivate" value="target.checked"}}
-                                data-test-private-checkbox
-                            >
-                            <span class="input-toggle-component"></span>
-                        </label>
+                        {{/if}}
+                    </div>
+                    <div class="gh-setting-action">
+                        <div class="for-switch">
+                            <label class="switch" for="settings-private">
+                                <input type="checkbox" checked={{settings.isPrivate}} id="settings-private"
+                                    onclick={{action "toggleIsPrivate" value="target.checked"}}
+                                    data-test-private-checkbox>
+                                <span class="input-toggle-component"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </section>
+        </section>
     </div>
 </section>
 {{outlet}}

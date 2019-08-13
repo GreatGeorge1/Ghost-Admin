@@ -123,11 +123,11 @@
                     <fieldset class="user-details-bottom">
 
                         {{#gh-form-group errors=user.errors hasValidated=user.hasValidated property="name" class="first-form-group"}}
-                            <label for="user-name">Full Name</label>
+                            <label for="user-name">Полное имя</label>
                             {{gh-text-input
                                 id="user-name"
                                 class="user-name"
-                                placeholder="Full Name"
+                                placeholder="Полное имя"
                                 autocorrect="off"
                                 value=(readonly user.name)
                                 input=(action (mut user.name) value="target.value")

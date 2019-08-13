@@ -104,7 +104,7 @@ export default AuthenticatedRoute.extend({
 
     buildRouteInfoMetadata() {
         return {
-            titleToken: 'Posts'
+            titleToken: 'Новости'
         };
     },
 

@@ -1,6 +1,6 @@
 <section class="gh-canvas">
     <GhCanvasHeader class="gh-canvas-header post-header">
-        <h2 class="gh-canvas-title" data-test-screen-title>Posts</h2>
+        <h2 class="gh-canvas-title" data-test-screen-title>Новости</h2>
         <section class="view-actions">
             <div class="gh-contentfilter">
                 {{#unless session.user.isContributor}}
@@ -17,7 +17,7 @@
                     data-test-type-select=true
                     as |type|
                 }}
-                    {{type.name}}
+                {{type.name}}
                 {{/power-select}}
                 {{/unless}}
 
@@ -36,7 +36,7 @@
                     data-test-author-select=true
                     as |author|
                 }}
-                    {{author.name}}
+                {{author.name}}
                 {{/power-select}}
                 {{/unless}}
 
@@ -56,7 +56,7 @@
                     data-test-tag-select=true
                     as |tag|
                 }}
-                    {{tag.name}}
+                {{tag.name}}
                 {{/power-select}}
                 {{/unless}}
 
@@ -73,28 +73,29 @@
                     data-test-order-select=true
                     as |order|
                 }}
-                    {{order.name}}
+                {{order.name}}
                 {{/power-select}}
             </div>
 
-            {{#link-to "editor.new" "post" class="gh-btn gh-btn-green" data-test-new-post-button=true}}<span>New post</span>{{/link-to}}
+            {{#link-to "editor.new" "post" class="gh-btn gh-btn-green" data-test-new-post-button=true}}<span>Создать
+                новость</span>{{/link-to}}
         </section>
     </GhCanvasHeader>
 
     <section class="content-list">
         <ol class="posts-list gh-list {{unless postsInfinityModel "no-posts"}}">
             {{#if postsInfinityModel}}
-                <li class="gh-list-row header">
-                    <div class="gh-list-header">{{!--Favorite indicator column: no header--}}</div>
-                    <div class="gh-list-header gh-posts-title-header">Title</div>
-                    <div class="gh-list-header">Status</div>
-                    <div class="gh-list-header">Last update</div>
-                    <div class="gh-list-header">Authors</div>
-                </li>
+            <li class="gh-list-row header">
+                <div class="gh-list-header">{{!--Favorite indicator column: no header--}}</div>
+                <div class="gh-list-header gh-posts-title-header">Название</div>
+                <div class="gh-list-header">Статус</div>
+                <div class="gh-list-header">Последнее обновление</div>
+                <div class="gh-list-header">Авторы</div>
+            </li>
             {{/if}}
 
             {{#each postsInfinityModel as |post|}}
-                {{gh-posts-list-item
+            {{gh-posts-list-item
                     post=post
                     onDoubleClick=(action "openEditor")
                     data-test-post-id=post.id}}
@@ -102,16 +103,16 @@
             <li class="no-posts-box">
                 <div class="no-posts">
                     {{#if showingAll}}
-                        {{svg-jar "posts-placeholder" class="gh-posts-placeholder"}}
-                        <h3>You haven't written any posts yet!</h3>
-                        {{#link-to "editor.new" "post" class="gh-btn gh-btn-green gh-btn-lg"}}
-                            <span>Write a new post</span>
-                        {{/link-to}}
+                    {{svg-jar "posts-placeholder" class="gh-posts-placeholder"}}
+                    <h3>У вас еще нет новостей!</h3>
+                    {{#link-to "editor.new" "post" class="gh-btn gh-btn-green gh-btn-lg"}}
+                    <span>Создать новость</span>
+                    {{/link-to}}
                     {{else}}
-                        <h3>No posts match the current filter</h3>
-                        {{#link-to "posts" (query-params type=null author=null tag=null) class="gh-btn gh-btn-lg"}}
-                            <span>Show all posts</span>
-                        {{/link-to}}
+                    <h3>Новостей по фильтру не найдено</h3>
+                    {{#link-to "posts" (query-params type=null author=null tag=null) class="gh-btn gh-btn-lg"}}
+                    <span>Показать все новости</span>
+                    {{/link-to}}
                     {{/if}}
                 </div>
             </li>

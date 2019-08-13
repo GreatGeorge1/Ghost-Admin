@@ -34,28 +34,28 @@ export default Component.extend({
 
     onSelected() {},
 
-    posts: computedGroup('Posts'),
-    pages: computedGroup('Pages'),
-    users: computedGroup('Users'),
-    tags: computedGroup('Tags'),
+    posts: computedGroup('Нововсти'),
+    pages: computedGroup('Страницы'),
+    users: computedGroup('Пользователи'),
+    tags: computedGroup('Метки'),
 
     groupedContent: computed('posts', 'pages', 'users', 'tags', function () {
         let groups = [];
 
         if (!isEmpty(this.posts)) {
-            groups.pushObject({groupName: 'Posts', options: this.posts});
+            groups.pushObject({groupName: 'Новости', options: this.posts});
         }
 
         if (!isEmpty(this.pages)) {
-            groups.pushObject({groupName: 'Pages', options: this.pages});
+            groups.pushObject({groupName: 'Страницы', options: this.pages});
         }
 
         if (!isEmpty(this.users)) {
-            groups.pushObject({groupName: 'Users', options: this.users});
+            groups.pushObject({groupName: 'Пользователи', options: this.users});
         }
 
         if (!isEmpty(this.tags)) {
-            groups.pushObject({groupName: 'Tags', options: this.tags});
+            groups.pushObject({groupName: 'Метки', options: this.tags});
         }
 
         return groups;
@@ -85,22 +85,22 @@ export default Component.extend({
 
             this.onSelected(selected);
 
-            if (selected.category === 'Posts') {
+            if (selected.category === 'Новости') {
                 let id = selected.id.replace('post.', '');
                 this.router.transitionTo('editor.edit', 'post', id);
             }
 
-            if (selected.category === 'Pages') {
+            if (selected.category === 'Страницы') {
                 let id = selected.id.replace('page.', '');
                 this.router.transitionTo('editor.edit', 'page', id);
             }
 
-            if (selected.category === 'Users') {
+            if (selected.category === 'Пользователи') {
                 let id = selected.id.replace('user.', '');
                 this.router.transitionTo('staff.user', id);
             }
 
-            if (selected.category === 'Tags') {
+            if (selected.category === 'Метки') {
                 let id = selected.id.replace('tag.', '');
                 this.router.transitionTo('tags.tag', id);
             }
@@ -168,7 +168,7 @@ export default Component.extend({
             content.pushObjects(posts.posts.map(post => ({
                 id: `post.${post.id}`,
                 title: post.title,
-                category: 'Posts'
+                category: 'Новости'
             })));
         }).catch((error) => {
             this.notifications.showAPIError(error, {key: 'search.loadPosts.error'});
@@ -185,7 +185,7 @@ export default Component.extend({
             content.pushObjects(pages.pages.map(page => ({
                 id: `page.${page.id}`,
                 title: page.title,
-                category: 'Pages'
+                category: 'Страницы'
             })));
         }).catch((error) => {
             this.notifications.showAPIError(error, {key: 'search.loadPosts.error'});
@@ -202,7 +202,7 @@ export default Component.extend({
             content.pushObjects(users.users.map(user => ({
                 id: `user.${user.slug}`,
                 title: user.name,
-                category: 'Users'
+                category: 'Пользователи'
             })));
         }).catch((error) => {
             this.notifications.showAPIError(error, {key: 'search.loadUsers.error'});
@@ -219,7 +219,7 @@ export default Component.extend({
             content.pushObjects(tags.tags.map(tag => ({
                 id: `tag.${tag.slug}`,
                 title: tag.name,
-                category: 'Tags'
+                category: 'Метки'
             })));
         }).catch((error) => {
             this.notifications.showAPIError(error, {key: 'search.loadTags.error'});

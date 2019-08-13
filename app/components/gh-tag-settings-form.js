@@ -32,9 +32,9 @@ export default Component.extend({
 
     title: computed('tag.isNew', function () {
         if (this.get('tag.isNew')) {
-            return 'New tag';
+            return 'Новая метка';
         } else {
-            return 'Tag settings';
+            return 'Настройки метки';
         }
     }),
 

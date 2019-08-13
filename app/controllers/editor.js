@@ -40,19 +40,19 @@ const messageMap = {
     errors: {
         post: {
             published: {
-                published: 'Update failed',
-                draft: 'Saving failed',
-                scheduled: 'Scheduling failed'
+                published: 'Не удалось обновить',
+                draft: 'Не удалось сохранить',
+                scheduled: 'Не удалось отложить публикацию'
             },
             draft: {
-                published: 'Publish failed',
-                draft: 'Saving failed',
-                scheduled: 'Scheduling failed'
+                published: 'Не удалось опубликовать',
+                draft: 'Не удалось сохранить',
+                scheduled: 'Не удалось отложить публикацию'
             },
             scheduled: {
-                scheduled: 'Update failed',
-                draft: 'Unscheduling failed',
-                published: 'Publish failed'
+                scheduled: 'Не удалось обновить',
+                draft: 'Не удалось отменить отложенную публикацию',
+                published: 'Не удалось опубликовать'
             }
 
         }
@@ -61,19 +61,19 @@ const messageMap = {
     success: {
         post: {
             published: {
-                published: 'Updated.',
-                draft: 'Saved.',
-                scheduled: 'Scheduled.'
+                published: 'Обновлено.',
+                draft: 'Сохранено.',
+                scheduled: 'Отложенно.'
             },
             draft: {
-                published: 'Published!',
-                draft: 'Saved.',
-                scheduled: 'Scheduled.'
+                published: 'Опубликовано!',
+                draft: 'Сохранено.',
+                scheduled: 'Отложенно.'
             },
             scheduled: {
-                scheduled: 'Updated.',
-                draft: 'Unscheduled.',
-                published: 'Published!'
+                scheduled: 'Обновлено.',
+                draft: 'Отложенная публикация отменена.',
+                published: 'Опубликовано!'
             }
         }
     }

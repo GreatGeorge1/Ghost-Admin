@@ -3,17 +3,17 @@
     <div class="gh-flow-content-wrap">
         <section class="gh-flow-content">
             <header>
-                <h1>Create your account</h1>
+                <h1>Создать профиль</h1>
             </header>
 
             <form id="signup" class="gh-flow-create" method="post" novalidate="novalidate" onsubmit={{action "submit"}}>
                 {{gh-profile-image email=signupDetails.email setImage=(action "setImage")}}
 
                 {{#gh-form-group errors=signupDetails.errors hasValidated=signupDetails.hasValidated property="name"}}
-                    <label for="name">Full name</label>
-                    <span class="gh-input-icon gh-icon-user">
-                        {{svg-jar "user-circle"}}
-                        {{gh-trim-focus-input
+                <label for="name">Полное имя</label>
+                <span class="gh-input-icon gh-icon-user">
+                    {{svg-jar "user-circle"}}
+                    {{gh-trim-focus-input
                             tabindex="1"
                             type="text"
                             id="display-name"
@@ -26,15 +26,15 @@
                             focus-out=(action "validate" "name")
                             data-test-input="name"
                         }}
-                    </span>
-                    {{gh-error-message errors=signupDetails.errors property="name"}}
+                </span>
+                {{gh-error-message errors=signupDetails.errors property="name"}}
                 {{/gh-form-group}}
 
                 {{#gh-form-group errors=signupDetails.errors hasValidated=signupDetails.hasValidated property="email"}}
-                    <label for="email">Email address</label>
-                    <span class="gh-input-icon gh-icon-mail">
-                        {{svg-jar "email"}}
-                        {{gh-text-input
+                <label for="email">Email адрес</label>
+                <span class="gh-input-icon gh-icon-mail">
+                    {{svg-jar "email"}}
+                    {{gh-text-input
                             tabindex="2"
                             type="text"
                             id="username"
@@ -47,15 +47,15 @@
                             focus-out=(action "validate" "email")
                             data-test-input="email"
                         }}
-                    </span>
-                    {{gh-error-message errors=signupDetails.errors property="email"}}
+                </span>
+                {{gh-error-message errors=signupDetails.errors property="email"}}
                 {{/gh-form-group}}
 
                 {{#gh-form-group errors=signupDetails.errors hasValidated=signupDetails.hasValidated property="password"}}
-                    <label for="password">Password</label>
-                    <span class="gh-input-icon gh-icon-lock">
-                        {{svg-jar "lock"}}
-                        {{gh-text-input
+                <label for="password">Пароль</label>
+                <span class="gh-input-icon gh-icon-lock">
+                    {{svg-jar "lock"}}
+                    {{gh-text-input
                             tabindex="3"
                             type="password"
                             id="password"
@@ -68,8 +68,8 @@
                             focus-out=(action "validate" "password")
                             data-test-input="password"
                         }}
-                    </span>
-                    {{gh-error-message errors=signupDetails.errors property="password"}}
+                </span>
+                {{gh-error-message errors=signupDetails.errors property="password"}}
                 {{/gh-form-group}}
             </form>
 
